@@ -265,7 +265,7 @@ h2 {
 .content-popular-week .container {
   width: 100%;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   flex: none;
   pointer-events: none;
 }
