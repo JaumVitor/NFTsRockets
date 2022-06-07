@@ -257,23 +257,23 @@ h2 {
 .content-popular-week {
   display: flex;
   overflow-x: auto;
-  padding-top: 3rem;
+  padding-top: 2rem;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
 
 .content-popular-week .container {
+  width: 100%;
   display: flex;
   gap: 1rem;
   flex: none;
   pointer-events: none;
-  width: 90%;
 }
 
-.content-popular-week .container img {
-  width: 100%;
-  border: 1px solid var(--subtitle-color);
+.content-popular-week .container .content-astronaut {
   border-radius: 0.8rem;
+  border: 1px solid var(--subtitle-color);
+  width: 90%;
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
