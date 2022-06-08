@@ -7,7 +7,8 @@
   --subtitle-color: #5a5757;
   --black-text: #000;
   --color-input: #0d0d0d;
-  --height-banner: 0px;
+  --height-nav: 8rem;
+  --height-menu: 25.7rem;
 }
 
 * {
@@ -42,6 +43,7 @@ h2 {
   line-height: 150%;
   padding-top: 6rem;
 }
+
 .wrapper {
   /* Usado no header e nav */
   width: min(50rem, 100%);
@@ -50,20 +52,191 @@ h2 {
   position: relative;
 }
 
+.connect-button {
+  padding: 1.4rem 3rem;
+  font-weight: bold;
+  font-size: 1.8rem;
+  border-radius: 0.8rem;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+
+  margin: 6rem auto;
+}
 /* --------------Navigation---------------- */
-.navigation {
+@keyframes animateBottomToTop {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animateTopToBottom {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+#navigation .content-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
-.navigation svg:nth-child(1) path[fill='white'] {
+#navigation .logo path[fill='white'] {
   fill: var(--subtitle-color);
 }
 
-.navigation svg:nth-child(2) path {
+#navigation .open-menu path {
   stroke: var(--color-logo);
+}
+
+#navigation .menu {
+  /* estado inicial */
+  display: none;
+  position: relative;
+}
+
+/* -------------menu mobile------------ */
+.menu-expanded #navigation,
+.scroll-on #navigation {
+  animation-name: animateTopToBottom;
+  animation-duration: 0.5s;
+  position: relative;
+  background: linear-gradient(
+    0deg,
+    rgba(120, 43, 37, 1) 1%,
+    rgba(200, 72, 63, 1) 70%,
+    rgba(255, 91, 80, 1) 115%
+  );
+}
+
+.menu-expanded #navigation::before {
+  content: '';
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  z-index: 11;
+  bottom: 0;
+  background-color: var(--body-background);
+}
+
+.menu-expanded #navigation .menu {
+  position: fixed;
+  top: 8rem;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+  padding-top: calc(50vh - var(--height-menu));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+
+  animation-name: animateBottomToTop;
+  animation-duration: 0.5s;
+}
+
+.menu-expanded #navigation .menu {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 91, 80, 1) 9%,
+    rgba(200, 72, 63, 1) 69%,
+    rgba(120, 43, 37, 1) 102%
+  );
+}
+
+.scroll-on #navigation,
+.menu-expanded #navigation {
+  /* background-color: var(--color-logo); */
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+
+  /* Entrada */
+  /* transition: 0.5s; */
+}
+
+.scroll-on #navigation .logo path[fill='white'],
+.menu-expanded #navigation .logo path[fill='white'] {
+  /* rocket */
+  fill: var(--text-color);
+}
+
+.scroll-on #navigation .logo path:nth-child(2)[fill='#FF5B50'],
+.menu-expanded #navigation .logo path:nth-child(2)[fill='#FF5B50'] {
+  /* nfts */
+  fill: var(--color-logo);
+}
+
+.scroll-on #navigation .open-menu path,
+.menu-expanded #navigation .open-menu path {
+  /* menu */
+  stroke: var(--text-color);
+}
+
+body.menu-expanded {
+  overflow: hidden;
+}
+
+body.menu-expanded #navigation:not(*) {
+  display: none;
+}
+
+.menu-expanded #navigation .menu > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.menu-expanded #navigation .menu .social-links {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 2rem;
+}
+
+.menu-expanded #navigation .menu .social-links path {
+  stroke: var(--text-color);
+}
+
+.menu-expanded #navigation .menu .social-links a:hover {
+  background-color: var(--card-color);
+  border-radius: 1rem;
+}
+
+.menu-expanded #navigation .menu .social-links a {
+  padding: 1rem 1rem 0.3rem;
+}
+
+.menu-expanded #navigation ul a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-shadow: 3px 5px 6px black;
+  padding: 2rem;
+}
+
+.menu-expanded #navigation ul a:hover {
+  font-size: 3rem;
+}
+
+.menu-expanded #navigation .connect-button {
+  margin: 0;
+  border: 1px solid var(--black-text);
+  cursor: pointer;
 }
 
 /* -----------------Home--------------------- */
@@ -84,7 +257,7 @@ h2 {
 }
 
 .header-home h1 {
-  padding-top: 3rem;
+  padding-top: 3.5rem;
   font-size: 3.4rem;
   line-height: 130%;
   text-align: center;
@@ -129,20 +302,6 @@ h2 {
 
 .content-home .topArtists .topArtists-text {
   grid-area: B;
-}
-
-.content-home .connect-button {
-  padding: 1.4rem 3rem;
-  font-weight: bold;
-  font-size: 1.8rem;
-  border-radius: 0.8rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.4rem;
-
-  margin: 6rem auto;
 }
 
 /* ------------- slider ------------ */
@@ -325,14 +484,14 @@ h2 {
 
 #best-artists section a {
   color: var(--text-color);
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-decoration: none;
   padding-top: 4.5rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 #best-artists ul li:nth-child(1) .artist {
@@ -443,10 +602,10 @@ footer hr {
 
 footer .social-links {
   display: flex;
-  padding: 6rem 0;
+  padding: 6rem 0 1rem;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 footer .site-address {
