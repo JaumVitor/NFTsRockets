@@ -85,11 +85,6 @@ h2 {
   }
 }
 
-/* #navigation {
-  /* saida */
-/* transition: background 0.5s; 
-} */
-
 #navigation .content-navigation {
   display: flex;
   justify-content: space-between;
@@ -103,6 +98,12 @@ h2 {
 
 #navigation .open-menu path {
   stroke: var(--color-logo);
+}
+
+#navigation .menu {
+  /* estado inicial */
+  display: none;
+  position: relative;
 }
 
 /* -------------menu mobile------------ */
@@ -127,12 +128,6 @@ h2 {
   z-index: 11;
   bottom: 0;
   background-color: var(--body-background);
-}
-
-#navigation .menu {
-  /* estado inicial */
-  display: none;
-  position: relative;
 }
 
 .menu-expanded #navigation .menu {
@@ -212,16 +207,36 @@ body.menu-expanded #navigation:not(*) {
   padding-top: 2rem;
 }
 
+.menu-expanded #navigation .menu .social-links path {
+  stroke: var(--text-color);
+}
+
+.menu-expanded #navigation .menu .social-links a:hover {
+  background-color: var(--card-color);
+  border-radius: 1rem;
+}
+
+.menu-expanded #navigation .menu .social-links a {
+  padding: 1rem 1rem 0.3rem;
+}
+
 .menu-expanded #navigation ul a {
   text-decoration: none;
-  color: var(--black-text);
+  color: var(--text-color);
   font-weight: 700;
   font-size: 2.5rem;
+  text-shadow: 3px 5px 6px black;
+  padding: 2rem;
+}
+
+.menu-expanded #navigation ul a:hover {
+  font-size: 3rem;
 }
 
 .menu-expanded #navigation .connect-button {
   margin: 0;
   border: 1px solid var(--black-text);
+  cursor: pointer;
 }
 
 /* -----------------Home--------------------- */
