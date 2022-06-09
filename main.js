@@ -32,6 +32,12 @@ function menuExpanded() {
   document.body.classList.toggle('menu-expanded')
 }
 
+//Adicionando fechamento do menu apos usar clicar em uma opção
+const listas = document.querySelectorAll('.menu ul li a')
+listas.forEach(element => {
+  element.addEventListener('click', menuExpanded)
+})
+
 // Declaraçõse das variaveis
 const container = document.querySelector('.container')
 const containerAstronauts = document.querySelector('#popular-week')

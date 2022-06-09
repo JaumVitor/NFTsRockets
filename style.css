@@ -23,6 +23,7 @@ html {
   color: var(--text-color);
   font-family: Montserrat;
   font-size: 1.6rem;
+  overflow: overlay;
 }
 
 section {
@@ -66,6 +67,10 @@ h2 {
 
   margin: 6rem auto;
 }
+
+.logo {
+  width: 17rem;
+}
 /* --------------Navigation---------------- */
 @keyframes animateBottomToTop {
   from {
@@ -107,17 +112,37 @@ h2 {
 }
 
 /* -------------menu mobile------------ */
-.menu-expanded #navigation,
+#navigation {
+  background-color: var(--body-background);
+}
+
 .scroll-on #navigation {
-  animation-name: animateTopToBottom;
-  animation-duration: 0.5s;
-  position: relative;
   background: linear-gradient(
     0deg,
     rgba(120, 43, 37, 1) 1%,
     rgba(200, 72, 63, 1) 70%,
     rgba(255, 91, 80, 1) 115%
   );
+}
+
+.menu-expanded #navigation,
+.scroll-on #navigation {
+  position: relative;
+
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.menu-expanded #navigation {
+  background: linear-gradient(
+    0deg,
+    rgba(120, 43, 37, 1) 1%,
+    rgba(200, 72, 63, 1) 70%,
+    rgba(255, 91, 80, 1) 115%
+  );
+  animation-name: animateTopToBottom;
+  animation-duration: 0.5s;
 }
 
 .menu-expanded #navigation::before {
@@ -156,17 +181,6 @@ h2 {
     rgba(200, 72, 63, 1) 69%,
     rgba(120, 43, 37, 1) 102%
   );
-}
-
-.scroll-on #navigation,
-.menu-expanded #navigation {
-  /* background-color: var(--color-logo); */
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-
-  /* Entrada */
-  /* transition: 0.5s; */
 }
 
 .scroll-on #navigation .logo path[fill='white'],
