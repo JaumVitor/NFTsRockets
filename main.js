@@ -32,6 +32,9 @@ function menuExpanded() {
   document.body.classList.toggle('menu-expanded')
 }
 
+// const listas = document.querySelectorAll('.menu ul')
+// function closeMenuAfterClick() {}
+
 // Declaraçõse das variaveis
 const container = document.querySelector('.container')
 const containerAstronauts = document.querySelector('#popular-week')
