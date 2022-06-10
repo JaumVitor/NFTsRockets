@@ -88,12 +88,12 @@ h2 {
   justify-content: center;
   align-items: center;
 
-  transition: transform 1s, background 0.3s;
+  transition: transform 0.5s, background 0.5s;
 }
 
 .scroll-on .close-menu {
   background: var(--color-logo);
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .close-menu::before {
@@ -104,7 +104,7 @@ h2 {
   background: var(--color-logo);
   box-shadow: 0 1rem var(--color-logo);
   transform: translateY(-1rem);
-  transition: 2s;
+  transition: 0.5s;
 }
 
 .close-menu.active::before {
@@ -136,7 +136,7 @@ h2 {
   height: 0.3rem;
   background: var(--color-logo);
   transform: translateY(1rem);
-  transition: 2s;
+  transition: 0.5s;
 }
 
 .close-menu.active::after {
@@ -168,7 +168,7 @@ h2 {
 
 #navigation {
   background-color: var(--body-background);
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 #navigation .content-navigation {
