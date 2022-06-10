@@ -48,7 +48,7 @@ h2 {
 
 .wrapper {
   /* Usado no header e nav */
-  width: min(50rem, 100%);
+  width: min(68rem, 100%);
   margin-inline: auto;
   padding-inline: 2.4rem;
   position: relative;
@@ -208,6 +208,7 @@ h2 {
   animation-duration: 0.5s;
 }
 
+.scroll-on #navigation::before,
 .menu-expanded #navigation::before {
   content: '';
   height: 2px;
@@ -225,7 +226,7 @@ h2 {
 
   width: 100%;
   height: 100vh;
-  padding-top: 8rem;
+  padding-top: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -293,7 +294,7 @@ ion-icon {
 .menu-expanded #navigation .menu ul:nth-child(1) {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 .menu-expanded #navigation .menu ul:nth-child(1) li {
@@ -305,27 +306,24 @@ ion-icon {
   gap: 2rem;
 }
 
-.menu-expanded #navigation .menu ul li:hover {
+.menu-expanded #navigation .menu ul li::hover {
   background: var(--card-color);
   box-shadow: 3px 5px 6px var(--subtitle-color);
   border-radius: 0.8rem;
 }
 
 .menu-expanded #navigation .menu ul li a {
-  font-size: 2.4rem;
-  width: 100%;
   font-weight: 700;
   color: var(--text-color);
 
   text-decoration: none;
-  font-size: 2.5rem;
-  text-shadow: 3px 5px 6px black;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 3px black;
 }
 
 .menu-expanded #navigation .menu .social-links {
-  padding-top: 2rem;
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
 }
 
 .menu-expanded #navigation .menu .social-links path {
@@ -337,7 +335,7 @@ ion-icon {
 }
 
 .menu-expanded #navigation .connect-button {
-  margin: 5rem 0 5rem;
+  margin: 2rem 0 4rem;
   border: 1px solid var(--black-text);
   cursor: pointer;
 
@@ -724,7 +722,8 @@ footer .site-address {
   padding-bottom: 6rem;
 }
 
-@media (max-width: 462px) {
+/* Correção width  */
+@media (max-width: 460px) {
   .home-section::before {
     content: '';
     width: 100%;
@@ -740,7 +739,7 @@ footer .site-address {
   }
 }
 
-@media (max-width: 372px) {
+@media (max-width: 373px) {
   .home-section::before {
     content: '';
     width: 100%;
@@ -756,7 +755,7 @@ footer .site-address {
   }
 }
 
-@media (max-width: 332px) {
+@media (max-width: 330px) {
   .home-section::before {
     content: '';
     width: 100%;
@@ -769,5 +768,17 @@ footer .site-address {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+}
+/* Correção height */
+@media (min-height: 700px) {
+  .menu-expanded #navigation .menu {
+    padding-top: 2rem;
+  }
+}
+
+@media (min-height: 750px) {
+  .menu-expanded #navigation .menu {
+    padding-top: 10rem;
   }
 }
