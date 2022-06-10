@@ -12,6 +12,18 @@ window.onscroll = () => {
   scrollOn()
 }
 
+function backToHome() {
+  if (window.scrollY > 0) {
+    window.scrollTo(0, 0)
+  }
+}
+
+const closeMenu = document.querySelector('.close-menu')
+closeMenu.addEventListener('click', () => {
+  closeMenu.classList.toggle('active')
+  document.body.classList.toggle('menu-expanded')
+})
+
 function scrollOn() {
   if (window.scrollY > 0) {
     document.body.classList.add('scroll-on')
@@ -44,6 +56,14 @@ const containerAstronauts = document.querySelector('#popular-week')
 const openMenu = document.querySelector('.open-menu')
 
 // Adicionando evento para os sliders, passando as funções sliders
-openMenu.addEventListener('click', menuExpanded)
+// openMenu.addEventListener('click', menuExpanded)
 container.addEventListener('wheel', nextContentSlider)
 containerAstronauts.addEventListener('wheel', nextContentSlider)
+
+ScrollReveal({
+  origin: 'top',
+  duration: 1000,
+  distance: '30px'
+}).reveal(
+  ` #home, .slider-image, .stats, .home-section, #popular-week, #best-artists, .artist, footer`
+)

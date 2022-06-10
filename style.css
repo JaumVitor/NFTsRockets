@@ -24,6 +24,7 @@ html {
   font-family: Montserrat;
   font-size: 1.6rem;
   overflow: overlay;
+  scroll-behavior: smooth;
 }
 
 section {
@@ -71,6 +72,81 @@ h2 {
 .logo {
   width: 17rem;
 }
+
+.logo,
+.open-menu,
+.close-menu {
+  cursor: pointer;
+}
+
+.close-menu {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  background: var(--body-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.5s, background 0.5s;
+}
+
+.scroll-on .close-menu {
+  background: var(--color-logo);
+  transition: 0.5s;
+}
+
+.close-menu::before {
+  position: absolute;
+  content: '';
+  width: 60%;
+  height: 0.3rem;
+  background: var(--color-logo);
+  box-shadow: 0 1rem var(--color-logo);
+  transform: translateY(-1rem);
+  transition: 0.5s;
+}
+
+.close-menu.active::before {
+  box-shadow: 0 0 var(--color-logo);
+  transform: translateY(0) rotate(45deg);
+}
+
+.scroll-on .close-menu::before,
+.menu-expanded .close-menu::before {
+  box-shadow: 0 1rem var(--text-color);
+  background: var(--text-color);
+}
+
+.scroll-on .close-menu.active::before,
+.menu-expanded .close-menu.active::before {
+  /* Corrigindo a transição do box-shadow */
+  box-shadow: 0 0rem var(--text-color);
+}
+
+.scroll-on .close-menu::after,
+.menu-expanded .close-menu::after {
+  background: var(--text-color);
+}
+
+.close-menu::after {
+  position: absolute;
+  content: '';
+  width: 60%;
+  height: 0.3rem;
+  background: var(--color-logo);
+  transform: translateY(1rem);
+  transition: 0.5s;
+}
+
+.close-menu.active::after {
+  transform: rotate(-45deg);
+}
+
+.menu-expanded .close-menu {
+  background: var(--color-logo);
+}
+
 /* --------------Navigation---------------- */
 @keyframes animateBottomToTop {
   from {
@@ -90,19 +166,16 @@ h2 {
   }
 }
 
+#navigation {
+  background-color: var(--body-background);
+  transition: 0.5s;
+}
+
 #navigation .content-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
-}
-
-#navigation .logo path[fill='white'] {
-  fill: var(--subtitle-color);
-}
-
-#navigation .open-menu path {
-  stroke: var(--color-logo);
 }
 
 #navigation .menu {
@@ -111,36 +184,26 @@ h2 {
   position: relative;
 }
 
+#navigation .logo path[fill='white'] {
+  /* rockets */
+  fill: var(--subtitle-color);
+  transition: 1s;
+}
+
+#navigation .logo path:nth-child(2)[fill='#FF5B50'] {
+  fill: var(--color-logo);
+  transition: 1s;
+}
+
+#navigation .open-menu path {
+  /* button */
+  stroke: var(--color-logo);
+  transition: 1s;
+}
+
 /* -------------menu mobile------------ */
-#navigation {
-  background-color: var(--body-background);
-}
-
-.scroll-on #navigation {
-  background: linear-gradient(
-    0deg,
-    rgba(120, 43, 37, 1) 1%,
-    rgba(200, 72, 63, 1) 70%,
-    rgba(255, 91, 80, 1) 115%
-  );
-}
-
-.menu-expanded #navigation,
-.scroll-on #navigation {
-  position: relative;
-
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-}
-
 .menu-expanded #navigation {
-  background: linear-gradient(
-    0deg,
-    rgba(120, 43, 37, 1) 1%,
-    rgba(200, 72, 63, 1) 70%,
-    rgba(255, 91, 80, 1) 115%
-  );
+  background: var(--color-logo);
   animation-name: animateTopToBottom;
   animation-duration: 0.5s;
 }
@@ -162,25 +225,31 @@ h2 {
 
   width: 100%;
   height: 100vh;
-  padding-top: calc(50vh - var(--height-menu));
+  padding-top: 8rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
   text-align: center;
 
   animation-name: animateBottomToTop;
   animation-duration: 0.5s;
 }
 
+.scroll-on #navigation,
 .menu-expanded #navigation .menu {
-  background: linear-gradient(
+  /* background: linear-gradient(
     0deg,
-    rgba(255, 91, 80, 1) 9%,
-    rgba(200, 72, 63, 1) 69%,
-    rgba(120, 43, 37, 1) 102%
-  );
+    rgba(120, 43, 37, 1) 1%,
+    rgba(200, 72, 63, 1) 70%,
+    rgba(255, 91, 80, 1) 115%
+  ); */
+  background: var(--color-logo);
+}
+
+.scroll-on #navigation .logo path:nth-child(2)[fill='#FF5B50'] {
+  /* nfts */
+  fill: var(--card-color);
 }
 
 .scroll-on #navigation .logo path[fill='white'],
@@ -189,16 +258,24 @@ h2 {
   fill: var(--text-color);
 }
 
-.scroll-on #navigation .logo path:nth-child(2)[fill='#FF5B50'],
 .menu-expanded #navigation .logo path:nth-child(2)[fill='#FF5B50'] {
   /* nfts */
-  fill: var(--color-logo);
+  fill: var(--card-color);
 }
 
 .scroll-on #navigation .open-menu path,
 .menu-expanded #navigation .open-menu path {
   /* menu */
   stroke: var(--text-color);
+}
+
+.menu-expanded #navigation,
+.scroll-on #navigation {
+  position: relative;
+
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 }
 
 body.menu-expanded {
@@ -209,48 +286,67 @@ body.menu-expanded #navigation:not(*) {
   display: none;
 }
 
-.menu-expanded #navigation .menu > ul {
+ion-icon {
+  font-size: 2.8rem;
+}
+
+.menu-expanded #navigation .menu ul:nth-child(1) {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 5rem;
+}
+
+.menu-expanded #navigation .menu ul:nth-child(1) li {
+  padding: 1rem;
+  transition: 0.3s;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu-expanded #navigation .menu ul li:hover {
+  background: var(--card-color);
+  box-shadow: 3px 5px 6px var(--subtitle-color);
+  border-radius: 0.8rem;
+}
+
+.menu-expanded #navigation .menu ul li a {
+  font-size: 2.4rem;
+  width: 100%;
+  font-weight: 700;
+  color: var(--text-color);
+
+  text-decoration: none;
+  font-size: 2.5rem;
+  text-shadow: 3px 5px 6px black;
 }
 
 .menu-expanded #navigation .menu .social-links {
-  display: flex;
-  justify-content: space-around;
   padding-top: 2rem;
+  display: flex;
+  gap: 5rem;
 }
 
 .menu-expanded #navigation .menu .social-links path {
   stroke: var(--text-color);
 }
 
-.menu-expanded #navigation .menu .social-links a:hover {
-  background-color: var(--card-color);
-  border-radius: 1rem;
-}
-
-.menu-expanded #navigation .menu .social-links a {
-  padding: 1rem 1rem 0.3rem;
-}
-
-.menu-expanded #navigation ul a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 700;
-  font-size: 2.5rem;
-  text-shadow: 3px 5px 6px black;
-  padding: 2rem;
-}
-
-.menu-expanded #navigation ul a:hover {
-  font-size: 3rem;
+.menu-expanded #navigation .menu .social-links li {
+  padding: 1rem 1rem 0.5rem 1rem;
 }
 
 .menu-expanded #navigation .connect-button {
-  margin: 0;
+  margin: 5rem 0 5rem;
   border: 1px solid var(--black-text);
   cursor: pointer;
+
+  transition: background 0.2s, color 0.8s;
+}
+
+.menu-expanded #navigation .connect-button:hover {
+  background-color: var(--subtitle-color);
+  color: var(--text-color);
 }
 
 /* -----------------Home--------------------- */
