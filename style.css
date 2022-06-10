@@ -151,12 +151,11 @@ h2 {
 
   width: 100%;
   height: 100vh;
-  padding-top: calc(50vh - var(--height-menu));
+  padding-top: 8rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
   text-align: center;
 
   animation-name: animateBottomToTop;
@@ -213,48 +212,67 @@ body.menu-expanded #navigation:not(*) {
   display: none;
 }
 
-.menu-expanded #navigation .menu > ul {
+ion-icon {
+  font-size: 2.8rem;
+}
+
+.menu-expanded #navigation .menu ul:nth-child(1) {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 5rem;
+}
+
+.menu-expanded #navigation .menu ul:nth-child(1) li {
+  padding: 1rem;
+  transition: 0.3s;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu-expanded #navigation .menu ul li:hover {
+  background: var(--card-color);
+  box-shadow: 3px 5px 6px var(--subtitle-color);
+  border-radius: 0.8rem;
+}
+
+.menu-expanded #navigation .menu ul li a {
+  font-size: 2.4rem;
+  width: 100%;
+  font-weight: 700;
+  color: var(--text-color);
+
+  text-decoration: none;
+  font-size: 2.5rem;
+  text-shadow: 3px 5px 6px black;
 }
 
 .menu-expanded #navigation .menu .social-links {
-  display: flex;
-  justify-content: space-around;
   padding-top: 2rem;
+  display: flex;
+  gap: 5rem;
 }
 
 .menu-expanded #navigation .menu .social-links path {
   stroke: var(--text-color);
 }
 
-.menu-expanded #navigation .menu .social-links a:hover {
-  background-color: var(--card-color);
-  border-radius: 1rem;
-}
-
-.menu-expanded #navigation .menu .social-links a {
-  padding: 1rem 1rem 0.3rem;
-}
-
-.menu-expanded #navigation ul a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 700;
-  font-size: 2.5rem;
-  text-shadow: 3px 5px 6px black;
-  padding: 2rem;
-}
-
-.menu-expanded #navigation ul a:hover {
-  font-size: 3rem;
+.menu-expanded #navigation .menu .social-links li {
+  padding: 1rem 1rem 0.5rem 1rem;
 }
 
 .menu-expanded #navigation .connect-button {
-  margin: 0;
+  margin: 5rem 0 5rem;
   border: 1px solid var(--black-text);
   cursor: pointer;
+
+  transition: background 0.2s, color 0.8s;
+}
+
+.menu-expanded #navigation .connect-button:hover {
+  background-color: var(--subtitle-color);
+  color: var(--text-color);
 }
 
 /* -----------------Home--------------------- */

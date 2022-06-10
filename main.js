@@ -54,3 +54,11 @@ const openMenu = document.querySelector('.open-menu')
 openMenu.addEventListener('click', menuExpanded)
 container.addEventListener('wheel', nextContentSlider)
 containerAstronauts.addEventListener('wheel', nextContentSlider)
+
+ScrollReveal({
+  origin: 'top',
+  duration: 1000,
+  distance: '30px'
+}).reveal(
+  ` #home, .slider-image, .stats, .home-section, #popular-week, #best-artists, .artist, footer`
+)
