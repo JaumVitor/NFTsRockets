@@ -18,6 +18,12 @@ function backToHome() {
   }
 }
 
+const closeMenu = document.querySelector('.close-menu')
+closeMenu.addEventListener('click', () => {
+  closeMenu.classList.toggle('active')
+  document.body.classList.toggle('menu-expanded')
+})
+
 function scrollOn() {
   if (window.scrollY > 0) {
     document.body.classList.add('scroll-on')
@@ -39,7 +45,6 @@ function menuExpanded() {
 }
 
 //Adicionando fechamento do menu apos usar clicar em uma opção
-
 const listas = document.querySelectorAll('.menu ul li a')
 listas.forEach(element => {
   element.addEventListener('click', menuExpanded)
@@ -51,7 +56,7 @@ const containerAstronauts = document.querySelector('#popular-week')
 const openMenu = document.querySelector('.open-menu')
 
 // Adicionando evento para os sliders, passando as funções sliders
-openMenu.addEventListener('click', menuExpanded)
+// openMenu.addEventListener('click', menuExpanded)
 container.addEventListener('wheel', nextContentSlider)
 containerAstronauts.addEventListener('wheel', nextContentSlider)
 

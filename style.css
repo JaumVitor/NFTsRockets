@@ -73,6 +73,80 @@ h2 {
   width: 17rem;
 }
 
+.logo,
+.open-menu,
+.close-menu {
+  cursor: pointer;
+}
+
+.close-menu {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  background: var(--body-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 1s, background 0.3s;
+}
+
+.scroll-on .close-menu {
+  background: var(--color-logo);
+  transition: 0.3s;
+}
+
+.close-menu::before {
+  position: absolute;
+  content: '';
+  width: 60%;
+  height: 0.3rem;
+  background: var(--color-logo);
+  box-shadow: 0 1rem var(--color-logo);
+  transform: translateY(-1rem);
+  transition: 2s;
+}
+
+.close-menu.active::before {
+  box-shadow: 0 0 var(--color-logo);
+  transform: translateY(0) rotate(45deg);
+}
+
+.scroll-on .close-menu::before,
+.menu-expanded .close-menu::before {
+  box-shadow: 0 1rem var(--text-color);
+  background: var(--text-color);
+}
+
+.scroll-on .close-menu.active::before,
+.menu-expanded .close-menu.active::before {
+  /* Corrigindo a transição do box-shadow */
+  box-shadow: 0 0rem var(--text-color);
+}
+
+.scroll-on .close-menu::after,
+.menu-expanded .close-menu::after {
+  background: var(--text-color);
+}
+
+.close-menu::after {
+  position: absolute;
+  content: '';
+  width: 60%;
+  height: 0.3rem;
+  background: var(--color-logo);
+  transform: translateY(1rem);
+  transition: 2s;
+}
+
+.close-menu.active::after {
+  transform: rotate(-45deg);
+}
+
+.menu-expanded .close-menu {
+  background: var(--color-logo);
+}
+
 /* --------------Navigation---------------- */
 @keyframes animateBottomToTop {
   from {
