@@ -24,6 +24,7 @@ html {
   font-family: Montserrat;
   font-size: 1.6rem;
   overflow: overlay;
+  scroll-behavior: smooth;
 }
 
 section {
@@ -71,6 +72,7 @@ h2 {
 .logo {
   width: 17rem;
 }
+
 /* --------------Navigation---------------- */
 @keyframes animateBottomToTop {
   from {
@@ -90,19 +92,16 @@ h2 {
   }
 }
 
+#navigation {
+  background-color: var(--body-background);
+  transition: 0.3s;
+}
+
 #navigation .content-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
-}
-
-#navigation .logo path[fill='white'] {
-  fill: var(--subtitle-color);
-}
-
-#navigation .open-menu path {
-  stroke: var(--color-logo);
 }
 
 #navigation .menu {
@@ -111,36 +110,26 @@ h2 {
   position: relative;
 }
 
+#navigation .logo path[fill='white'] {
+  /* rockets */
+  fill: var(--subtitle-color);
+  transition: 1s;
+}
+
+#navigation .logo path:nth-child(2)[fill='#FF5B50'] {
+  fill: var(--color-logo);
+  transition: 1s;
+}
+
+#navigation .open-menu path {
+  /* button */
+  stroke: var(--color-logo);
+  transition: 1s;
+}
+
 /* -------------menu mobile------------ */
-#navigation {
-  background-color: var(--body-background);
-}
-
-.scroll-on #navigation {
-  background: linear-gradient(
-    0deg,
-    rgba(120, 43, 37, 1) 1%,
-    rgba(200, 72, 63, 1) 70%,
-    rgba(255, 91, 80, 1) 115%
-  );
-}
-
-.menu-expanded #navigation,
-.scroll-on #navigation {
-  position: relative;
-
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-}
-
 .menu-expanded #navigation {
-  background: linear-gradient(
-    0deg,
-    rgba(120, 43, 37, 1) 1%,
-    rgba(200, 72, 63, 1) 70%,
-    rgba(255, 91, 80, 1) 115%
-  );
+  background: var(--color-logo);
   animation-name: animateTopToBottom;
   animation-duration: 0.5s;
 }
@@ -174,13 +163,20 @@ h2 {
   animation-duration: 0.5s;
 }
 
+.scroll-on #navigation,
 .menu-expanded #navigation .menu {
-  background: linear-gradient(
+  /* background: linear-gradient(
     0deg,
-    rgba(255, 91, 80, 1) 9%,
-    rgba(200, 72, 63, 1) 69%,
-    rgba(120, 43, 37, 1) 102%
-  );
+    rgba(120, 43, 37, 1) 1%,
+    rgba(200, 72, 63, 1) 70%,
+    rgba(255, 91, 80, 1) 115%
+  ); */
+  background: var(--color-logo);
+}
+
+.scroll-on #navigation .logo path:nth-child(2)[fill='#FF5B50'] {
+  /* nfts */
+  fill: var(--card-color);
 }
 
 .scroll-on #navigation .logo path[fill='white'],
@@ -189,16 +185,24 @@ h2 {
   fill: var(--text-color);
 }
 
-.scroll-on #navigation .logo path:nth-child(2)[fill='#FF5B50'],
 .menu-expanded #navigation .logo path:nth-child(2)[fill='#FF5B50'] {
   /* nfts */
-  fill: var(--color-logo);
+  fill: var(--card-color);
 }
 
 .scroll-on #navigation .open-menu path,
 .menu-expanded #navigation .open-menu path {
   /* menu */
   stroke: var(--text-color);
+}
+
+.menu-expanded #navigation,
+.scroll-on #navigation {
+  position: relative;
+
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 }
 
 body.menu-expanded {

@@ -12,6 +12,12 @@ window.onscroll = () => {
   scrollOn()
 }
 
+function backToHome() {
+  if (window.scrollY > 0) {
+    window.scrollTo(0, 0)
+  }
+}
+
 function scrollOn() {
   if (window.scrollY > 0) {
     document.body.classList.add('scroll-on')
@@ -33,6 +39,7 @@ function menuExpanded() {
 }
 
 //Adicionando fechamento do menu apos usar clicar em uma opção
+
 const listas = document.querySelectorAll('.menu ul li a')
 listas.forEach(element => {
   element.addEventListener('click', menuExpanded)
