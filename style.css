@@ -208,6 +208,7 @@ h2 {
   animation-duration: 0.5s;
 }
 
+.scroll-on #navigation::before,
 .menu-expanded #navigation::before {
   content: '';
   height: 2px;
@@ -225,7 +226,7 @@ h2 {
 
   width: 100%;
   height: 100vh;
-  padding-top: 8rem;
+  padding-top: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -238,12 +239,6 @@ h2 {
 
 .scroll-on #navigation,
 .menu-expanded #navigation .menu {
-  /* background: linear-gradient(
-    0deg,
-    rgba(120, 43, 37, 1) 1%,
-    rgba(200, 72, 63, 1) 70%,
-    rgba(255, 91, 80, 1) 115%
-  ); */
   background: var(--color-logo);
 }
 
@@ -293,14 +288,13 @@ ion-icon {
 .menu-expanded #navigation .menu ul:nth-child(1) {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
 }
 
 .menu-expanded #navigation .menu ul:nth-child(1) li {
   padding: 1rem;
   transition: 0.3s;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   gap: 2rem;
 }
@@ -312,20 +306,17 @@ ion-icon {
 }
 
 .menu-expanded #navigation .menu ul li a {
-  font-size: 2.4rem;
-  width: 100%;
   font-weight: 700;
   color: var(--text-color);
 
   text-decoration: none;
-  font-size: 2.5rem;
-  text-shadow: 3px 5px 6px black;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 3px black;
 }
 
 .menu-expanded #navigation .menu .social-links {
-  padding-top: 2rem;
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
 }
 
 .menu-expanded #navigation .menu .social-links path {
@@ -337,7 +328,7 @@ ion-icon {
 }
 
 .menu-expanded #navigation .connect-button {
-  margin: 5rem 0 5rem;
+  margin: 2rem 0 4rem;
   border: 1px solid var(--black-text);
   cursor: pointer;
 
@@ -725,7 +716,50 @@ footer .site-address {
   padding-bottom: 6rem;
 }
 
-@media (max-width: 462px) {
+@media (min-width: 650px) {
+  /* Expandindo meu .wrapper para melhorar resoluções em tablets  */
+  .wrapper {
+    /* Usado no header e nav */
+    width: min(76.8rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+    position: relative;
+  }
+
+  .content-home .imgs {
+    /* Primeiro slider */
+    width: min(50rem, 90%);
+  }
+
+  .content-home .container {
+    gap: 4rem;
+  }
+
+  .content-popular-week .container {
+    gap: 4rem;
+  }
+
+  #best-artists h2 {
+    margin-bottom: 2rem;
+  }
+
+  #best-artists ul li:nth-child(1) .artist {
+    margin: 0;
+  }
+
+  #best-artists .content-best-artists ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'A B';
+  }
+
+  .home-section::before {
+    transform: translateY(35rem);
+  }
+}
+
+/* Correção width  */
+@media (max-width: 460px) {
   .home-section::before {
     content: '';
     width: 100%;
@@ -741,7 +775,7 @@ footer .site-address {
   }
 }
 
-@media (max-width: 372px) {
+@media (max-width: 373px) {
   .home-section::before {
     content: '';
     width: 100%;
@@ -757,7 +791,7 @@ footer .site-address {
   }
 }
 
-@media (max-width: 332px) {
+@media (max-width: 330px) {
   .home-section::before {
     content: '';
     width: 100%;
@@ -770,5 +804,18 @@ footer .site-address {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  }
+}
+
+/* Correção height */
+@media (min-height: 700px) {
+  .menu-expanded #navigation .menu {
+    padding-top: 2rem;
+  }
+}
+
+@media (min-height: 750px) {
+  .menu-expanded #navigation .menu {
+    padding-top: 10rem;
   }
 }
