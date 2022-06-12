@@ -715,6 +715,107 @@ footer .site-address {
   padding-bottom: 6rem;
 }
 
+@media (min-width: 1024px) {
+  body .wrapper {
+    width: min(112rem, 100%);
+    padding-inline: 3rem;
+  }
+
+  nav#navigation .wrapper * {
+    margin: 0;
+    padding: 0;
+    visibility: initial;
+    display: initial;
+    opacity: initial;
+    flex-direction: initial;
+    position: initial;
+    font-size: initial;
+    font-weight: initial;
+    transform: initial;
+    color: initial;
+    background-color: initial;
+    filter: initial;
+    overflow: initial;
+  }
+
+  nav#navigation .close-menu,
+  nav#navigation .social-links {
+    display: none;
+  }
+
+  nav#navigation .menu li ion-icon {
+    display: none;
+  }
+
+  nav#navigation .content-navigation {
+    display: flex;
+    align-items: center;
+    /* justify-content:  */
+    padding: 2rem 0;
+  }
+
+  nav#navigation .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0.85;
+  }
+
+  nav#navigation .menu ul:nth-child(1) {
+    /* Especificando o primeiro ul, para não pagar o social links */
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav#navigation .menu li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 700;
+    opacity: 0.7;
+    transition: 0.5s;
+  }
+
+  nav#navigation .menu li a:hover {
+    opacity: 1;
+  }
+
+  nav#navigation .connect-button {
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    border-radius: 0.8rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--text-color);
+    transition: background 0.5s, color 0.8s;
+  }
+
+  nav#navigation .connect-button:hover {
+    background-color: var(--color-logo);
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .scroll-on nav#navigation .connect-button:hover {
+    background-color: var(--subtitle-color);
+  }
+
+  nav#navigation .logo:hover path[fill='white'] {
+    fill: var(--text-color);
+  }
+
+  .scroll-on nav#navigation .logo:hover path[fill='white'] {
+    /* rocket */
+    fill: var(--card-color);
+  }
+
+  .scroll-on #navigation .logo:hover path:nth-child(2)[fill='#FF5B50'] {
+    /* nfts */
+    fill: var(--subtitle-color);
+  }
+}
+
 @media (min-width: 650px) {
   /* Expandindo meu .wrapper para melhorar resoluções em tablets  */
   .wrapper {

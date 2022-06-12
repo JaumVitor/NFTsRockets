@@ -60,6 +60,13 @@ const openMenu = document.querySelector('.open-menu')
 container.addEventListener('wheel', nextContentSlider)
 containerAstronauts.addEventListener('wheel', nextContentSlider)
 
+// Adicionando navSlider
+// const slider = document.createElement('div')
+// const contentNavigation = document.querySelector('.content-navigation')
+
+// slider.setAttribute('class', 'slider').append(slider)
+// contentNavigation.append(slider)
+
 ScrollReveal({
   origin: 'top',
   duration: 1000,
