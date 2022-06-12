@@ -40,8 +40,8 @@ function nextContentSlider(event) {
   }
 }
 
+const wrapper = document.querySelector('.wrapper')
 function menuExpanded() {
-  const wrapper = document.querySelector('.wrapper')
   if (!(wrapper.offsetWidth >= 1024)) {
     // Para não ativar o menu expanded na versão desktop
     document.body.classList.toggle('menu-expanded')

@@ -201,6 +201,9 @@ h2 {
   transition: 1s;
 }
 
+.slider {
+  display: none;
+}
 /* -------------menu mobile------------ */
 .menu-expanded #navigation {
   background: var(--color-logo);
@@ -751,7 +754,6 @@ footer .site-address {
     position: relative;
     display: flex;
     align-items: center;
-    /* justify-content:  */
     padding: 2rem 0;
   }
 
@@ -816,6 +818,9 @@ footer .site-address {
     fill: var(--subtitle-color);
   }
 
+  nav#navigation .slider {
+    display: block;
+  }
   nav#navigation .content-navigation .slider {
     position: absolute;
     bottom: 2rem;
