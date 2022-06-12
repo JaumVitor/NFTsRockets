@@ -748,6 +748,7 @@ footer .site-address {
   }
 
   nav#navigation .content-navigation {
+    position: relative;
     display: flex;
     align-items: center;
     /* justify-content:  */
@@ -771,7 +772,7 @@ footer .site-address {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 700;
-    opacity: 0.7;
+    opacity: 0.8;
     transition: 0.5s;
   }
 
@@ -813,6 +814,20 @@ footer .site-address {
   .scroll-on #navigation .logo:hover path:nth-child(2)[fill='#FF5B50'] {
     /* nfts */
     fill: var(--subtitle-color);
+  }
+
+  nav#navigation .content-navigation .slider {
+    position: absolute;
+    bottom: 2rem;
+    background-color: var(--color-logo);
+    height: 0.4rem;
+    border-radius: 0.8rem;
+    width: 0rem;
+    transition: 0.5s;
+  }
+
+  .scroll-on nav#navigation .content-navigation .slider {
+    background-color: var(--card-color);
   }
 }
 

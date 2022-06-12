@@ -41,7 +41,16 @@ function nextContentSlider(event) {
 }
 
 function menuExpanded() {
-  document.body.classList.toggle('menu-expanded')
+  const wrapper = document.querySelector('.wrapper')
+  if (!(wrapper.offsetWidth >= 1024)) {
+    // Para não ativar o menu expanded na versão desktop
+    document.body.classList.toggle('menu-expanded')
+  }
+}
+
+function nextElementSlider(element) {
+  slider.style.left = element.offsetLeft + 'px'
+  slider.style.width = element.offsetWidth + 'px'
 }
 
 //Adicionando fechamento do menu apos usar clicar em uma opção
@@ -61,11 +70,24 @@ container.addEventListener('wheel', nextContentSlider)
 containerAstronauts.addEventListener('wheel', nextContentSlider)
 
 // Adicionando navSlider
-// const slider = document.createElement('div')
-// const contentNavigation = document.querySelector('.content-navigation')
+const slider = document.createElement('div')
+const contentNavigation = document.querySelector('.content-navigation')
+const options = document.querySelectorAll('.options ul li')
 
-// slider.setAttribute('class', 'slider').append(slider)
-// contentNavigation.append(slider)
+slider.setAttribute('class', 'slider')
+contentNavigation.append(slider)
+
+options.forEach(element => {
+  // slider.style.width = '0px'
+  element.addEventListener('mouseover', event => {
+    nextElementSlider(event.target)
+    console.log(event.target.offsetLeft)
+  })
+})
+
+document.body.addEventListener('wheel', () => {
+  slider.style.width = '0px'
+})
 
 ScrollReveal({
   origin: 'top',
