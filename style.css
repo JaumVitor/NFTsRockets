@@ -1017,7 +1017,9 @@ footer .site-address {
   }
 
   body #popular-week h2 {
+    font-size: 4rem;
     padding: 0;
+    margin-bottom: 8rem;
   }
 
   body #popular-week section {
@@ -1030,11 +1032,11 @@ footer .site-address {
     flex-wrap: wrap;
     gap: 5rem;
     justify-content: space-between;
+    overflow: hidden;
   }
 
   body #popular-week .content-astronaut {
     max-width: 40rem;
-    border: none;
   }
 
   body #popular-week .content-astronaut:nth-child(1)::before {
@@ -1046,9 +1048,37 @@ footer .site-address {
     left: 50%;
   }
 
-  body #popular-week .content-astronaut:nth-child(1),
-  body #popular-week .content-astronaut:nth-child(2) {
-    margin-bottom: 5rem;
+  /* -----best-artists------- */
+  body #best-artists {
+    padding-top: 15rem;
+  }
+
+  body #best-artists section {
+    padding: 0;
+  }
+
+  body #best-artists h2 {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+
+  body #best-artists .content-best-artists ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  body #best-artists .content-best-artists li {
+    width: 30%;
+  }
+
+  body #best-artists .content-best-artists li:nth-child(1),
+  body #best-artists .content-best-artists li:nth-child(2),
+  body #best-artists .content-best-artists li:nth-child(3) {
+    margin-bottom: 4rem;
   }
 }
 
