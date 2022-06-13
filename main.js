@@ -78,13 +78,16 @@ slider.setAttribute('class', 'slider')
 contentNavigation.append(slider)
 
 options.forEach(element => {
-  element.addEventListener('mouseover', event => {
+  element.addEventListener('click', event => {
     nextElementSlider(event.target)
     console.log(event.target.offsetLeft)
   })
 })
 
-document.body.addEventListener('wheel', () => {
+const element = document.querySelector('body:not(#navigation)')
+const navigation = document.querySelector('#navigation')
+
+element.addEventListener('wheel', () => {
   slider.style.width = '0px'
 })
 
