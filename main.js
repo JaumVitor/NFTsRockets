@@ -40,8 +40,17 @@ function nextContentSlider(event) {
   }
 }
 
+const wrapper = document.querySelector('.wrapper')
 function menuExpanded() {
-  document.body.classList.toggle('menu-expanded')
+  if (!(wrapper.offsetWidth >= 1024)) {
+    // Para não ativar o menu expanded na versão desktop
+    document.body.classList.toggle('menu-expanded')
+  }
+}
+
+function nextElementSlider(element) {
+  slider.style.left = element.offsetLeft + 'px'
+  slider.style.width = element.offsetWidth + 'px'
 }
 
 //Adicionando fechamento do menu apos usar clicar em uma opção
@@ -61,11 +70,34 @@ container.addEventListener('wheel', nextContentSlider)
 containerAstronauts.addEventListener('wheel', nextContentSlider)
 
 // Adicionando navSlider
-// const slider = document.createElement('div')
-// const contentNavigation = document.querySelector('.content-navigation')
+const slider = document.createElement('div')
+const contentNavigation = document.querySelector('.content-navigation')
+const options = document.querySelectorAll('.options ul li')
 
-// slider.setAttribute('class', 'slider').append(slider)
-// contentNavigation.append(slider)
+slider.setAttribute('class', 'slider')
+contentNavigation.append(slider)
+
+options.forEach(element => {
+  element.addEventListener('click', event => {
+    nextElementSlider(event.target)
+    console.log(event.target.offsetLeft)
+  })
+})
+
+const element = document.querySelector('body:not(#navigation)')
+const navigation = document.querySelector('#navigation')
+
+element.addEventListener('wheel', () => {
+  slider.style.width = '0px'
+})
+
+// Adicionando svg na col-c
+const colunaC = document.querySelector('.col-c')
+const svg = document.createElement('img')
+svg.setAttribute('class', 'logo-art')
+svg.setAttribute('src', './assets/badge.svg')
+svg.setAttribute('alt', 'badge nfts')
+colunaC.append(svg)
 
 ScrollReveal({
   origin: 'top',
