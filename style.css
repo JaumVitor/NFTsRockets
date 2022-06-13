@@ -357,7 +357,7 @@ ion-icon {
   opacity: 0.5;
   position: absolute;
   background-position: center;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .header-home h1 {
@@ -408,6 +408,9 @@ ion-icon {
   grid-area: B;
 }
 
+.col-c {
+  display: none;
+}
 /* ------------- slider ------------ */
 .content-home .container {
   width: 100%;
@@ -724,6 +727,7 @@ footer .site-address {
     padding-inline: 3rem;
   }
 
+  /* ------------navigation--------------- */
   nav#navigation .wrapper * {
     margin: 0;
     padding: 0;
@@ -833,6 +837,87 @@ footer .site-address {
 
   .scroll-on nav#navigation .content-navigation .slider {
     background-color: var(--card-color);
+  }
+
+  /* ----------------Home----------- */
+  body #home .container-grid {
+    padding-top: 6rem;
+
+    display: grid;
+    grid-template-areas:
+      'A B C'
+      'D D D';
+    grid-template-columns: 0.8fr 1.2fr 0.4fr;
+    gap: 3rem;
+  }
+
+  body #home .col-a {
+    /* colum text*/
+    grid-area: A;
+  }
+
+  body #home .col-a .content-home p {
+    text-align: left;
+    padding: 0;
+    font-size: 1.8rem;
+  }
+
+  body #home .col-a .content-home h2 {
+    font-size: 2rem;
+  }
+
+  body #home .topArtists .topArtists-text {
+    margin-left: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  body #home .col-b {
+    /* header */
+    grid-area: B;
+    display: flex;
+  }
+
+  body #home .col-b h1 {
+    font-size: 4rem;
+    padding: 0;
+  }
+
+  body #home .col-b .header-home h1 {
+    text-align: start;
+  }
+
+  body #home .col-c {
+    /* badage */
+    grid-area: C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  body #home .content-home:nth-child(4) {
+    /* sliders */
+    padding-top: 6rem;
+    grid-area: D;
+  }
+
+  body #home .connect-button {
+    display: none;
+  }
+
+  /* slider------ */
+  body #home .content-home .container {
+    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  body #home .container .imgs {
+    padding-bottom: 3rem;
+    width: 23%;
   }
 }
 

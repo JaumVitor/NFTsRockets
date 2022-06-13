@@ -78,7 +78,6 @@ slider.setAttribute('class', 'slider')
 contentNavigation.append(slider)
 
 options.forEach(element => {
-  // slider.style.width = '0px'
   element.addEventListener('mouseover', event => {
     nextElementSlider(event.target)
     console.log(event.target.offsetLeft)
@@ -88,6 +87,14 @@ options.forEach(element => {
 document.body.addEventListener('wheel', () => {
   slider.style.width = '0px'
 })
+
+// Adicionando svg na col-c
+const colunaC = document.querySelector('.col-c')
+const svg = document.createElement('img')
+svg.setAttribute('class', 'logo-art')
+svg.setAttribute('src', './assets/badge.svg')
+svg.setAttribute('alt', 'badge nfts')
+colunaC.append(svg)
 
 ScrollReveal({
   origin: 'top',
