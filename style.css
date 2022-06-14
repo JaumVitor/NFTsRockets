@@ -723,7 +723,7 @@ footer .site-address {
 
 @media (min-width: 1024px) {
   body .wrapper {
-    width: min(120rem, 100%);
+    width: min(112rem, 100%);
     padding-inline: 3rem;
   }
 
