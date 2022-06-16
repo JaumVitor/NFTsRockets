@@ -24,6 +24,7 @@ html {
   font-family: Montserrat;
   font-size: 1.6rem;
   overflow: overlay;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -499,7 +500,7 @@ ion-icon {
 
 .home-section::before {
   content: '';
-  width: 100%;
+  width: 100vw;
   height: 150px;
   position: absolute;
   left: 0;
@@ -638,6 +639,10 @@ footer {
   background: var(--card-color);
 }
 
+footer .list-footer {
+  display: none;
+}
+
 .button-to-top {
   background: var(--color-logo);
   padding: 1.5rem 1.5rem 1rem;
@@ -652,9 +657,8 @@ footer {
   align-items: center;
 }
 
-footer p:nth-last-child(4) {
-  font-size: 1.8rem;
-  margin-bottom: 3rem;
+footer h4 {
+  padding-bottom: 2rem;
 }
 
 footer span {
@@ -667,7 +671,7 @@ footer label {
   justify-content: center;
   align-items: center;
   flex: 1;
-  margin-bottom: 6rem;
+  padding-bottom: 6rem;
 }
 
 footer input {
@@ -710,6 +714,22 @@ footer hr {
   border: 1px solid var(--subtitle-color);
 }
 
+.contact-me {
+  position: relative;
+}
+
+.contact-me::before {
+  content: '';
+  position: absolute;
+  background-color: var(--subtitle-color);
+  width: 100vw;
+  height: 1px;
+
+  transform: translateX(-50vw);
+  left: 50%;
+  bottom: 0;
+}
+
 footer .social-links {
   display: flex;
   padding: 6rem 0 1rem;
@@ -729,6 +749,20 @@ footer .site-address {
   body .wrapper {
     width: min(112rem, 100%);
     padding-inline: 3rem;
+  }
+
+  footer .header-footer::before,
+  footer .content-footer::before,
+  body #home .container-grid-stats::before {
+    content: '';
+    position: absolute;
+    background-color: var(--subtitle-color);
+    width: 100vw;
+    height: 1px;
+
+    transform: translateX(-50vw);
+    left: 50%;
+    bottom: 0;
   }
 
   /* ------------navigation--------------- */
@@ -953,10 +987,12 @@ footer .site-address {
     content: '';
     position: absolute;
     width: 100vw;
-    left: -17%;
     height: 1px;
-    bottom: -1px;
     background: var(--subtitle-color);
+
+    left: 50%;
+    bottom: -1px;
+    transform: translateX(-50%);
   }
 
   body #home .container-grid-stats * {
@@ -1017,8 +1053,8 @@ footer .site-address {
     width: 100vw;
     height: 100%;
     background-image: url(./assets/banner.png);
-    background-position-x: -15rem;
     background-repeat: no-repeat;
+    background-position-x: -15rem;
   }
 
   /* ------------Popular-week------- */
@@ -1093,6 +1129,78 @@ footer .site-address {
   body #best-artists .content-best-artists li:nth-child(2),
   body #best-artists .content-best-artists li:nth-child(3) {
     margin-bottom: 4rem;
+  }
+
+  /*-------- footer----- */
+  footer .header-footer {
+    position: relative;
+    padding: 6rem 0 4rem;
+  }
+
+  footer .content-footer {
+    position: relative;
+  }
+
+  footer .contact-me {
+    display: flex;
+    flex: 1.5;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 6rem 6rem 0rem;
+
+    border-right: 1px solid var(--subtitle-color);
+  }
+
+  footer .contact-me > h4 {
+    font-size: 1.8rem;
+    padding-bottom: 2rem;
+  }
+
+  footer label {
+    margin: 0;
+    padding: 0;
+  }
+
+  footer .list-footer {
+    display: flex;
+    flex: 2;
+    justify-content: space-between;
+    padding-inline: 9rem;
+  }
+
+  footer .list-footer a {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: var(--subtitle-color);
+  }
+
+  footer .list-footer h4 {
+    margin-bottom: 1rem;
+  }
+
+  footer .list-footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  body .content-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .contacts p.site-address,
+  footer .contacts .social-links {
+    padding: 0;
+  }
+
+  footer .contacts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding-block: 5rem;
   }
 }
 
