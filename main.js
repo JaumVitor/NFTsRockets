@@ -108,13 +108,30 @@ listas.forEach(element => {
 
 // Declaraçõse das variaveis
 const container = document.querySelector('.container')
-const containerAstronauts = document.querySelector('#popular-week')
+const containerAstronauts = document.querySelector('.content-popular-week')
 const openMenu = document.querySelector('.open-menu')
 
 // Adicionando evento para os sliders, passando as funções sliders
 // openMenu.addEventListener('click', menuExpanded)
-container.addEventListener('wheel', nextContentSlider)
-containerAstronauts.addEventListener('wheel', nextContentSlider)
+container.style.overflowX = 'hidden'
+containerAstronauts.style.overflowX = 'hidden'
+container.addEventListener('mouseover', event => {
+  document.documentElement.style.overflow = 'hidden'
+  container.addEventListener('wheel', nextContentSlider)
+})
+
+container.addEventListener('mouseout', event => {
+  document.documentElement.style.overflow = 'auto'
+})
+
+containerAstronauts.addEventListener('mouseover', event => {
+  document.documentElement.style.overflow = 'hidden'
+  containerAstronauts.addEventListener('wheel', nextContentSlider)
+})
+
+containerAstronauts.addEventListener('mouseout', event => {
+  document.documentElement.style.overflow = 'auto'
+})
 
 // Adicionando navSlider
 const slider = document.createElement('div')
