@@ -106,3 +106,48 @@ ScrollReveal({
 }).reveal(
   ` #home, .slider-image, .stats, .home-section, #popular-week, #best-artists, .artist, footer`
 )
+
+// Adicionando aninhamento do banner para dispositivos mobile
+let valueSumHeight = 530
+
+if (window.innerWidth >= 648) {
+  valueSumHeight = 500
+} else if (window.innerWidth >= 461) {
+  valueSumHeight = 490
+} else if (window.innerWidth >= 460) {
+  valueSumHeight = 415
+} else if (window.innerWidth >= 456) {
+  valueSumHeight = 460
+} else if (window.innerWidth >= 450) {
+  valueSumHeight = 475
+} else if (window.innerWidth >= 400) {
+  valueSumHeight = 460
+} else if (window.innerWidth >= 374) {
+  valueSumHeight = 450
+} else if (window.innerWidth >= 361) {
+  valueSumHeight = 500
+} else if (window.innerWidth >= 331) {
+  valueSumHeight = 520
+} else if (window.innerWidth >= 268) {
+  valueSumHeight = 540
+} else if (window.innerWidth >= 250) {
+  valueSumHeight = 590
+} else {
+  valueSumHeight = 620
+}
+
+const homeSection = document.querySelector('.home-section')
+const homeSectionBottom =
+  homeSection.offsetHeight + homeSection.offsetTop + valueSumHeight + 'px'
+let value = getComputedStyle(document.documentElement).getPropertyValue(
+  '--off-set-home-stats'
+)
+
+document.documentElement.style.setProperty(
+  '--off-set-home-stats',
+  homeSectionBottom
+)
+
+getComputedStyle(document.documentElement).getPropertyValue(
+  '--off-set-home-stats'
+)
