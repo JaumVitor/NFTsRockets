@@ -5,6 +5,8 @@ window.onload = () => {
   } else {
     document.body.classList.remove('scroll-on')
   }
+
+  adjustBanner()
 }
 
 window.onscroll = () => {
@@ -53,6 +55,51 @@ function nextElementSlider(element) {
   slider.style.width = element.offsetWidth + 'px'
 }
 
+function adjustBanner() {
+  let valueSumHeight = 530
+  if (window.innerWidth >= 648) {
+    valueSumHeight = 500
+  } else if (window.innerWidth >= 461) {
+    valueSumHeight = 490
+  } else if (window.innerWidth >= 459) {
+    valueSumHeight = 480
+  } else if (window.innerWidth >= 456) {
+    valueSumHeight = 510
+  } else if (window.innerWidth >= 450) {
+    valueSumHeight = 530
+  } else if (window.innerWidth >= 374) {
+    valueSumHeight = 520
+  } else if (window.innerWidth >= 346) {
+    valueSumHeight = 550
+  } else if (window.innerWidth >= 331) {
+    valueSumHeight = 580
+  } else if (window.innerWidth >= 292) {
+    valueSumHeight = 550
+  } else if (window.innerWidth >= 268) {
+    valueSumHeight = 620
+  } else if (window.innerWidth >= 251) {
+    valueSumHeight = 620
+  } else if (window.innerWidth >= 249) {
+    valueSumHeight = 680
+  } else if (window.innerWidth >= 248) {
+    valueSumHeight = 680
+  } else {
+    valueSumHeight = 710
+  }
+
+  let homeSectionBottom =
+    homeSection.offsetHeight + homeSection.offsetTop + valueSumHeight + 'px'
+
+  document.documentElement.style.setProperty(
+    '--off-set-home-stats',
+    homeSectionBottom
+  )
+
+  getComputedStyle(document.documentElement).getPropertyValue(
+    '--off-set-home-stats'
+  )
+}
+
 //Adicionando fechamento do menu apos usar clicar em uma opção
 const listas = document.querySelectorAll('.menu ul li a')
 listas.forEach(element => {
@@ -80,7 +127,6 @@ contentNavigation.append(slider)
 options.forEach(element => {
   element.addEventListener('mouseover', event => {
     nextElementSlider(event.target)
-    console.log(event.target.offsetLeft)
   })
 })
 
@@ -108,46 +154,11 @@ ScrollReveal({
 )
 
 // Adicionando aninhamento do banner para dispositivos mobile
-let valueSumHeight = 530
-
-if (window.innerWidth >= 648) {
-  valueSumHeight = 500
-} else if (window.innerWidth >= 461) {
-  valueSumHeight = 490
-} else if (window.innerWidth >= 460) {
-  valueSumHeight = 415
-} else if (window.innerWidth >= 456) {
-  valueSumHeight = 460
-} else if (window.innerWidth >= 450) {
-  valueSumHeight = 475
-} else if (window.innerWidth >= 400) {
-  valueSumHeight = 460
-} else if (window.innerWidth >= 374) {
-  valueSumHeight = 450
-} else if (window.innerWidth >= 361) {
-  valueSumHeight = 500
-} else if (window.innerWidth >= 331) {
-  valueSumHeight = 520
-} else if (window.innerWidth >= 268) {
-  valueSumHeight = 540
-} else if (window.innerWidth >= 250) {
-  valueSumHeight = 590
-} else {
-  valueSumHeight = 620
-}
-
-const homeSection = document.querySelector('.home-section')
-const homeSectionBottom =
-  homeSection.offsetHeight + homeSection.offsetTop + valueSumHeight + 'px'
 let value = getComputedStyle(document.documentElement).getPropertyValue(
   '--off-set-home-stats'
 )
+const homeSection = document.querySelector('.home-section')
 
-document.documentElement.style.setProperty(
-  '--off-set-home-stats',
-  homeSectionBottom
-)
-
-getComputedStyle(document.documentElement).getPropertyValue(
-  '--off-set-home-stats'
-)
+window.addEventListener('resize', () => {
+  adjustBanner()
+})

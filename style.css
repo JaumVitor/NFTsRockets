@@ -1250,11 +1250,11 @@ footer .site-address {
 }
 
 /* Correção width  */
-@media (max-width: 460px) {
+/* @media (max-width: 460px) {
   .home-stats::before {
     transform: translateY(45rem);
   }
-}
+} */
 
 /* Correção height */
 @media (min-height: 700px) {
