@@ -25,7 +25,7 @@ html {
   color: var(--text-color);
   font-family: Montserrat;
   font-size: 1.6rem;
-  overflow: overlay;
+  overflow: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -1248,13 +1248,6 @@ footer .site-address {
     transform: translateY(35rem);
   }
 }
-
-/* Correção width  */
-/* @media (max-width: 460px) {
-  .home-stats::before {
-    transform: translateY(45rem);
-  }
-} */
 
 /* Correção height */
 @media (min-height: 700px) {

@@ -14,6 +14,11 @@ window.onscroll = () => {
   scrollOn()
 }
 
+window.addEventListener('resize', () => {
+  adjustBanner()
+  checkInnerWidth(window.innerWidth)
+})
+
 function backToHome() {
   if (window.scrollY > 0) {
     window.scrollTo(0, 0)
@@ -53,6 +58,47 @@ function menuExpanded() {
 function nextElementSlider(element) {
   slider.style.left = element.offsetLeft + 'px'
   slider.style.width = element.offsetWidth + 'px'
+}
+
+// Adicionando evento para os sliders, passando as funções sliders
+function checkInnerWidth(windowWidth) {
+  if (windowWidth < 1024) {
+    console.log('mobile')
+    //Vai desabilitar o scroll slider somente na versão mobile/tablet
+    container.style.overflowX = 'hidden'
+    containerAstronauts.style.overflowX = 'hidden'
+    container.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'hidden'
+      container.addEventListener('wheel', nextContentSlider)
+
+      //adicionando uma class no meu body, quando o mouse estiver sobre o slider
+      document.body.classList.add('slider-on')
+    })
+
+    container.addEventListener('mouseout', () => {
+      document.documentElement.style.overflow = 'auto'
+      document.body.classList.remove('slider-on')
+    })
+
+    containerAstronauts.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'hidden'
+      containerAstronauts.addEventListener('wheel', nextContentSlider)
+    })
+
+    containerAstronauts.addEventListener('mouseout', () => {
+      document.documentElement.style.overflow = 'auto'
+    })
+  } else {
+    console.log('desktop')
+    // Vai habilitar o scroll novamente na versão desktop
+    container.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'auto'
+    })
+
+    containerAstronauts.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'auto'
+    })
+  }
 }
 
 function adjustBanner() {
@@ -111,28 +157,6 @@ const container = document.querySelector('.container')
 const containerAstronauts = document.querySelector('.content-popular-week')
 const openMenu = document.querySelector('.open-menu')
 
-// Adicionando evento para os sliders, passando as funções sliders
-// openMenu.addEventListener('click', menuExpanded)
-container.style.overflowX = 'hidden'
-containerAstronauts.style.overflowX = 'hidden'
-container.addEventListener('mouseover', event => {
-  document.documentElement.style.overflow = 'hidden'
-  container.addEventListener('wheel', nextContentSlider)
-})
-
-container.addEventListener('mouseout', event => {
-  document.documentElement.style.overflow = 'auto'
-})
-
-containerAstronauts.addEventListener('mouseover', event => {
-  document.documentElement.style.overflow = 'hidden'
-  containerAstronauts.addEventListener('wheel', nextContentSlider)
-})
-
-containerAstronauts.addEventListener('mouseout', event => {
-  document.documentElement.style.overflow = 'auto'
-})
-
 // Adicionando navSlider
 const slider = document.createElement('div')
 const contentNavigation = document.querySelector('.content-navigation')
@@ -176,6 +200,4 @@ let value = getComputedStyle(document.documentElement).getPropertyValue(
 )
 const homeSection = document.querySelector('.home-section')
 
-window.addEventListener('resize', () => {
-  adjustBanner()
-})
+checkInnerWidth(window.innerWidth)
