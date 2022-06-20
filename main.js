@@ -65,8 +65,6 @@ function checkInnerWidth(windowWidth) {
   if (windowWidth < 1024) {
     console.log('mobile')
     //Vai desabilitar o scroll slider somente na versão mobile/tablet
-    container.style.overflowX = 'hidden'
-    containerAstronauts.style.overflowX = 'hidden'
     container.addEventListener('mouseover', () => {
       document.documentElement.style.overflow = 'hidden'
       container.addEventListener('wheel', nextContentSlider)
