@@ -5,12 +5,19 @@ window.onload = () => {
   } else {
     document.body.classList.remove('scroll-on')
   }
+
+  adjustBanner()
 }
 
 window.onscroll = () => {
   // Chama a função scrollOn toda vez que o scroll for usado
   scrollOn()
 }
+
+window.addEventListener('resize', () => {
+  adjustBanner()
+  checkInnerWidth(window.innerWidth)
+})
 
 function backToHome() {
   if (window.scrollY > 0) {
@@ -53,6 +60,92 @@ function nextElementSlider(element) {
   slider.style.width = element.offsetWidth + 'px'
 }
 
+// Adicionando evento para os sliders, passando as funções sliders
+function checkInnerWidth(windowWidth) {
+  if (windowWidth < 1024) {
+    console.log('mobile')
+    //Vai desabilitar o scroll slider somente na versão mobile/tablet
+    container.style.overflowX = 'hidden'
+    containerAstronauts.style.overflowX = 'hidden'
+    container.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'hidden'
+      container.addEventListener('wheel', nextContentSlider)
+
+      //adicionando uma class no meu body, quando o mouse estiver sobre o slider
+      document.body.classList.add('slider-on')
+    })
+
+    container.addEventListener('mouseout', () => {
+      document.documentElement.style.overflow = 'auto'
+      document.body.classList.remove('slider-on')
+    })
+
+    containerAstronauts.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'hidden'
+      containerAstronauts.addEventListener('wheel', nextContentSlider)
+    })
+
+    containerAstronauts.addEventListener('mouseout', () => {
+      document.documentElement.style.overflow = 'auto'
+    })
+  } else {
+    console.log('desktop')
+    // Vai habilitar o scroll novamente na versão desktop
+    container.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'auto'
+    })
+
+    containerAstronauts.addEventListener('mouseover', () => {
+      document.documentElement.style.overflow = 'auto'
+    })
+  }
+}
+
+function adjustBanner() {
+  let valueSumHeight = 530
+  if (window.innerWidth >= 648) {
+    valueSumHeight = 500
+  } else if (window.innerWidth >= 461) {
+    valueSumHeight = 490
+  } else if (window.innerWidth >= 459) {
+    valueSumHeight = 480
+  } else if (window.innerWidth >= 456) {
+    valueSumHeight = 510
+  } else if (window.innerWidth >= 450) {
+    valueSumHeight = 530
+  } else if (window.innerWidth >= 374) {
+    valueSumHeight = 520
+  } else if (window.innerWidth >= 346) {
+    valueSumHeight = 550
+  } else if (window.innerWidth >= 331) {
+    valueSumHeight = 580
+  } else if (window.innerWidth >= 292) {
+    valueSumHeight = 550
+  } else if (window.innerWidth >= 268) {
+    valueSumHeight = 620
+  } else if (window.innerWidth >= 251) {
+    valueSumHeight = 620
+  } else if (window.innerWidth >= 249) {
+    valueSumHeight = 680
+  } else if (window.innerWidth >= 248) {
+    valueSumHeight = 680
+  } else {
+    valueSumHeight = 710
+  }
+
+  let homeSectionBottom =
+    homeSection.offsetHeight + homeSection.offsetTop + valueSumHeight + 'px'
+
+  document.documentElement.style.setProperty(
+    '--off-set-home-stats',
+    homeSectionBottom
+  )
+
+  getComputedStyle(document.documentElement).getPropertyValue(
+    '--off-set-home-stats'
+  )
+}
+
 //Adicionando fechamento do menu apos usar clicar em uma opção
 const listas = document.querySelectorAll('.menu ul li a')
 listas.forEach(element => {
@@ -61,13 +154,8 @@ listas.forEach(element => {
 
 // Declaraçõse das variaveis
 const container = document.querySelector('.container')
-const containerAstronauts = document.querySelector('#popular-week')
+const containerAstronauts = document.querySelector('.content-popular-week')
 const openMenu = document.querySelector('.open-menu')
-
-// Adicionando evento para os sliders, passando as funções sliders
-// openMenu.addEventListener('click', menuExpanded)
-container.addEventListener('wheel', nextContentSlider)
-containerAstronauts.addEventListener('wheel', nextContentSlider)
 
 // Adicionando navSlider
 const slider = document.createElement('div')
@@ -80,7 +168,6 @@ contentNavigation.append(slider)
 options.forEach(element => {
   element.addEventListener('mouseover', event => {
     nextElementSlider(event.target)
-    console.log(event.target.offsetLeft)
   })
 })
 
@@ -108,46 +195,9 @@ ScrollReveal({
 )
 
 // Adicionando aninhamento do banner para dispositivos mobile
-let valueSumHeight = 530
-
-if (window.innerWidth >= 648) {
-  valueSumHeight = 500
-} else if (window.innerWidth >= 461) {
-  valueSumHeight = 490
-} else if (window.innerWidth >= 460) {
-  valueSumHeight = 415
-} else if (window.innerWidth >= 456) {
-  valueSumHeight = 460
-} else if (window.innerWidth >= 450) {
-  valueSumHeight = 475
-} else if (window.innerWidth >= 400) {
-  valueSumHeight = 460
-} else if (window.innerWidth >= 374) {
-  valueSumHeight = 450
-} else if (window.innerWidth >= 361) {
-  valueSumHeight = 500
-} else if (window.innerWidth >= 331) {
-  valueSumHeight = 520
-} else if (window.innerWidth >= 268) {
-  valueSumHeight = 540
-} else if (window.innerWidth >= 250) {
-  valueSumHeight = 590
-} else {
-  valueSumHeight = 620
-}
-
-const homeSection = document.querySelector('.home-section')
-const homeSectionBottom =
-  homeSection.offsetHeight + homeSection.offsetTop + valueSumHeight + 'px'
 let value = getComputedStyle(document.documentElement).getPropertyValue(
   '--off-set-home-stats'
 )
+const homeSection = document.querySelector('.home-section')
 
-document.documentElement.style.setProperty(
-  '--off-set-home-stats',
-  homeSectionBottom
-)
-
-getComputedStyle(document.documentElement).getPropertyValue(
-  '--off-set-home-stats'
-)
+checkInnerWidth(window.innerWidth)
